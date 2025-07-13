@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8" />
+  <title>ತಿರಿಕೆ ಲಿಪಿಗೆ ಬದಲಾವಣೆ</title>
+  <style>
+    @font-face {
+      font-family: 'KodavaFont';
+      src: url('thirke.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'Noto Sans Kannada', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdf5f7;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 12px;
+    }
+
+    nav a {
+      color: #80004d;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #80004d;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      font-size: 18px;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: 'Noto Sans Kannada', sans-serif;
+    }
+
+    #thirkeOutput {
+      font-family: 'KodavaFont';
+      font-size: 30px;
+    }
+
+    .search-box {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .mapping-table {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .column {
+      width: 48%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      font-size: 18px;
+    }
+
+    td.kannada {
+      font-weight: bold;
+      color: #80004d;
+    }
+
+    .copy-button {
+      font-size: 16px;
+      padding: 6px 14px;
+      background-color: #80004d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #80004d;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">ಮುಖ್ಯ ಪುಟ</a>
+   <a href="fonts.html">ಕೊಡವ ಫಾಂಟ್‍ಗಳು</a>
+  <a href="badalavane.html">ತಿರಿಕೆ ಲಿಪಿಗೆ ಬದಲಾವಣೆ</a>
+  <a href="muttanna-badalavane.html">ಮುತ್ತಣ್ಣ ಲಿಪಿಗೆ ಬದಲಾವಣೆ</a>
+</nav>
+
+<div class="container">
+  <!-- Input Box -->
+  <textarea id="kannadaInput" placeholder="ಇಲ್ಲಿ ಕನ್ನಡ ಬರೆಯಿರಿ..." oninput="convertText()"></textarea>
+
+  <!-- Output Box -->
+  <textarea id="thirkeOutput" placeholder="ಇಲ್ಲಿ ತಿರಿಕೆ ಲಿಪಿ ಬರುತ್ತದೆ..." readonly></textarea>
+
+  <!-- Copy Button Below Output -->
+  <div>
+    <button onclick="copyOutput()" class="copy-button">📋 ನಕಲು ಮಾಡಿ</button>
+  </div>
+
+  <!-- Heading -->
+  <h2>ತಿರಿಕೆ ಲಿಪಿಗೆ ಬದಲಾವಣೆ: ಅಕ್ಷರ ನಕ್ಷೆ</h2>
+
+  <!-- Search Box -->
+  <div class="search-box">
+    <input type="text" id="search" placeholder="ಅಥ್ವಾ 'ಅ' ಅಥ್ವಾ 'k' ಎಸು ನಕ್ಷೆ...">
+  </div>
+
+  <!-- Mapping Table -->
+  <div class="mapping-table" id="mappingTable">
+    <div class="column">
+      <table>
+        <tbody id="leftColumn"></tbody>
+      </table>
+    </div>
+    <div class="column">
+      <table>
+        <tbody id="rightColumn"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 ಕೊಡವ ಭಾಷೆ ಪೋರ್ಟಲ್ | ತಿರಿಕೆ ಲಿಪಿ ಪ್ರಚಾರಕ್ಕಾಗಿ ವಿನ್ಯಾಸಗೋಳಿಸಲೆ
+</footer>
+
+<script src="transliterate.js"></script>
+<script>
+  function copyOutput() {
+    const output = document.getElementById('thirkeOutput');
+    output.select();
+    document.execCommand('copy');
+    alert('ನಕಲು ಮಾಡಲಾಗಿದೆ!');
+  }
+</script>
+</body>
+</html>
